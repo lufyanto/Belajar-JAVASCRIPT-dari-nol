@@ -65,7 +65,40 @@ cloneC.nama = "Caca";
 console.log(userAsli.nama);
 console.log(cloneC.nama);
 
+console.log("=== 4. KLONING BERSARANG ===");
 
+let userKomplek = {
+    name : "Lufy",
+    size : {
+        height : 165,
+        width : 50
+    }
+};
+
+let cloneDangkal = Object.assign({}, userKomplek);
+console.log(`Apakah objek "Size" sama?... ${userKomplek.size === cloneDangkal.size}`);
+
+userKomplek.size.width++;
+console.log(`Lebar size diklon dangkal ikut berubah: ${cloneDangkal.size.width}`);
+
+function deepClone(obj){
+    if (obj === null || typeof obj !== "object"){
+        return obj;
+    }
+
+    let tempClone = Array.isArray(obj) ? [] : {};
+    for (let key in obj){
+        tempClone[key] = deepClone(obj[key]);
+    }
+    return tempClone;
+}
+
+let cloneMendalam = deepClone(userKomplek);
+console.log(`Apakah objek sizes sama setelah deepclone?... ${userKomplek.size === cloneMendalam.size}`);
+
+userKomplek.size.width = 100;
+console.log(`Lebar di objek asli : ${userKomplek.size.width}`);
+console.log(`Lebar di klon mendalam tetap aman : ${cloneMendalam.size.width}`);
 
 
 
