@@ -100,7 +100,14 @@ userKomplek.size.width = 100;
 console.log(`Lebar di objek asli : ${userKomplek.size.width}`);
 console.log(`Lebar di klon mendalam tetap aman : ${cloneMendalam.size.width}`);
 
+console.log("=== 5. OBJEK KONSTANTA ===");
 
+const userKonstan = {
+    name : "Lufyanto"
+};
+
+userKonstan.name = "Joko";
+console.log(`Nama sudah di ubah => ${userKonstan.name}` );
 
 
 
